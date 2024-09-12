@@ -1,7 +1,7 @@
  Hi, I’m Carlotta Rivera Alcalde
  I’m interested in data science and data analitycs
- \n
-I’ve been working with Python since the beginnings of my bachelor’s degree in mechatronics engineering. \n
+
+I’ve been working with Python since the beginnings of my bachelor’s degree in mechatronics engineering.
 Here are some projects that I've completed.
 
 
