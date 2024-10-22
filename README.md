@@ -8,11 +8,6 @@ You can click the Preview link to take a look at your changes.
 --->
 
 ``` sql
-# Load required packages -------------------------------------------------------  
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(here,  
-               tidyverse, 
-               janitor, # Cleaning column names  
-               scales, # Transform axis scales   
-               ggrepel) # Optimise plot label separation  
+select love from city byke
+
 ```
