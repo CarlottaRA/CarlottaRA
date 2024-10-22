@@ -8,7 +8,7 @@ cel. 4775816697\
 linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
 
 My CV:\
-<CVCarlottaRiveraAlcalde.pdf>
+CVCarlottaRiveraAlcalde.pdf
 
 
 <!---
