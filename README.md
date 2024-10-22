@@ -4,8 +4,8 @@ I am proactive, tenacious, and possess a logical mindset, always eager to learn 
 
 Contact info:\
 email: <carlottariveraalcalde@gmail.com>\
-cel. 4775816697
-\linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
+cel. 4775816697\
+linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
 
 <!---
 CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
