@@ -7,6 +7,12 @@ CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (t
 You can click the Preview link to take a look at your changes.
 --->
 
-'''r
-install.packages(tydiverse)
-'''
+``` r
+# Load required packages -------------------------------------------------------  
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(here,  
+               tidyverse, 
+               janitor, # Cleaning column names  
+               scales, # Transform axis scales   
+               ggrepel) # Optimise plot label separation  
+```
