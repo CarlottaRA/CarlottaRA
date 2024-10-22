@@ -1,9 +1,6 @@
  Hi, I’m Carlotta Rivera Alcalde
- I’m interested in data science and data analitycs
-
-I’ve been working with Python since the beginnings of my bachelor’s degree in mechatronics engineering.
-Here are some projects that I've completed.
-
+I am a Mechatronics Engineering graduate from Universidad Iberoamericana León, with a strong focus on data science and data analytics. Throughout my career, I have developed advanced skills in Python and SQL. My experience includes working on automation projects and data-driven solutions.
+I am proactive, tenacious, and possess a logical mindset, always eager to learn new things. I have a deep passion for technology and enjoy tackling challenges like riddles and puzzles, which reflect my problem-solving abilities.
 
 <!---
 CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
