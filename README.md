@@ -6,3 +6,6 @@ I am proactive, tenacious, and possess a logical mindset, always eager to learn 
 CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
+
+'''r
+install.packages(tydiverse)
