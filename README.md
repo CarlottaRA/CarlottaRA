@@ -3,7 +3,7 @@ I am a Mechatronics Engineering graduate from Universidad Iberoamericana León, 
 I am proactive, tenacious, and possess a logical mindset, always eager to learn new things. I have a deep passion for technology and enjoy tackling challenges like riddles and puzzles, which reflect my problem-solving abilities.
 
 Contact info:\
-email: <carlottariveraalcalde@gmail.com>       \cel. 4775816697      \linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
+email: <carlottariveraalcalde@gmail.com>\cel. 4775816697\linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
 
 <!---
 CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
