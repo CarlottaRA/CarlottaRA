@@ -7,7 +7,7 @@ CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (t
 You can click the Preview link to take a look at your changes.
 --->
 
-``` r
+``` sql
 # Load required packages -------------------------------------------------------  
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(here,  
