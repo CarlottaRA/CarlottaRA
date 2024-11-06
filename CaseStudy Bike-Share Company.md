@@ -196,4 +196,5 @@ From this two tables we can undestand that in from January to March rides incris
 | Seasonality (Jan - Mar)               | Increase in rides, but no change in  duration. | Increase in rides, no change in duration. |
 
 So the biggest differences that I'll like to focus on is trip duration, frequency of rides and popular days. To show this better I'll create a visual using Tableau. 
+*popular station for casual riders
 
