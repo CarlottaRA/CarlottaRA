@@ -72,19 +72,19 @@ CONCAT(
     LPAD(CAST(FLOOR(CAST(avg(ride_lenght)as int64) / 3600) AS STRING), 2, '0'), ':',
     LPAD(CAST(FLOOR(mod( cast(avg(ride_lenght) as int64), 3600) / 60) AS STRING), 2, '0'), ':',
     LPAD(CAST(mod(cast(avg(ride_lenght)as int64) , 60) AS STRING), 2, '0')
-  ) AS formated_time
+  ) AS formatted_time
 FROM bikesharecompany-440704.bikes.Quarter12019_2020
 group by member_casual
 ```
+*The concat was used to show a more undertandable format of time, given that the calculus is done using only seconds.
+
+| member_casual | avg_ride_length     | formatted_time |
+|---------------|---------------------|----------------|
+| casual        | 5105.48785575302    | 01:25:05      |
+| member        | 795.251260216061    | 00:13:15      |
 
 
-| member_casual | avg_ride_length       | formatted_time |
-|---------------|-----------------------|----------------|
-| casual        | 37772.2079795431      | 10:29:32       |
-| member        | 4389.3426657019245    | 01:13:09       |
-
-This shows a very infated result in de casual riders wich leads me to belive ther are some data entries of casual members were their rides where days long.
-To see a true vison of the avrage user I will exclude entries with more than a 3 day ride. 
+This shows a high result in de casual riders to make sure this is not doe to specific rides that are days long I will exclude entries with more than a 3 day ride. 
 ```{sql}
 SELECT member_casual,avg(ride_lenght) as avg_ride_lenght, 
 CONCAT(
@@ -96,15 +96,16 @@ FROM bikesharecompany-440704.bikes.Quarter12019_2020
 where ride_lenght<259200
 group by member_casual
 ```
-| member_casual | avg_ride_length       | formatted_time |
-|---------------|-----------------------|----------------|
-| casual        | 511.59599840996543    | 00:08:32       |
-| member        | 622.69042871856914    | 00:10:23       |
+| member_casual | avg_ride_length      | formatted_time |
+|---------------|----------------------|----------------|
+| casual        | 2517.2586083565729   | 00:41:57      |
+| member        | 708.87884303532451   | 00:11:49      |
+
 
 Now we can see a big difference from the previuse table wich tells us a whole different story. The previus table was usefull to know one difference 
-* Casual riders are more likely to take the bike for more multiple days
-This table shows that the avarage time is not that different but
-* Casual riders have shorter trips by about two minutes
+* Casual riders are more likely to take the bike for multiple days
+This table shows that the avarage time is very different for the types of riders
+* Casual riders have longer trips by about therty minutes
 
 #### Ride count for each type of membership
 ```{sql}
@@ -115,29 +116,84 @@ group by member_casual
 ```
 | member_casual | total_count_rides |
 |---------------|-------------------|
-| casual        | 30503             |
-| member        | 317890            |
+| casual        | 71433             |
+| member        | 720313            |
+
 
 #### Ride count for each type of membership, for each day of the week
 ```{sql}
-select day_of_week, count(case when member_casual='casual' then ride_id end) as count_casual,
+SELECT day_of_week, count(case when member_casual='casual' then ride_id end) as count_casual,
  count(case when member_casual='member' then ride_id end) as count_member 
 from bikes.Quarter12019_2020
 group by day_of_week
 ```
 | day_of_week | count_casual | count_member |
 |-------------|--------------|--------------|
-| Saturday    | 2617         | 39322        |
-| Monday      | 7554         | 52390        |
-| Friday      | 6819         | 46628        |
-| Thursday    | 3169         | 48697        |
-| Wednesday   | 3654         | 38431        |
-| Tuesday     | 2834         | 50486        |
-| Sunday      | 3856         | 41936        |
+| Wednesday   | 8363         | 121903       |
+| Thursday    | 7771         | 125228       |
+| Friday      | 8508         | 115168       |
+| Monday      | 6694         | 110430       |
+| Tuesday     | 7972         | 127974       |
+| Sunday      | 18652        | 60197        |
+| Saturday    | 13473        | 59413        |
 
-This tells us thant 
+
+This tells us that 
 * There are significatly less rides by casual member
-* Highest days for Casual riders is Monday and Friday
-* Highest days form members are Monday and Tuesday
-
+* Highest days for Casual riders is the weekends
+* Highest days form members are Tuesday and Thursday
   
+#### Ride count for each type of membership, for each month of the quarter
+```{sql}
+SELECT EXTRACT(MONTH FROM started_at) AS month, count(case when member_casual='casual' then ride_id end) as count_casual,
+ count(case when member_casual='member' then ride_id end) as count_member 
+from bikes.Quarter12019_2020
+group by month
+order by month
+```
+| month | count_casual | count_member |
+|-------|--------------|--------------|
+| Jan   | 12387        | 234769       |
+| Feb   | 15498        | 220263       |
+| March | 43548        | 265281       |
+
+#### Avarage ride lenght for each type of membership for the month
+
+```{sql}
+select EXTRACT(MONTH FROM started_at) AS month, 
+CONCAT(
+    LPAD(CAST(FLOOR(CAST(avg(case when member_casual='casual' then ride_lenght end)as int64) / 3600) AS STRING), 2, '0'), ':',
+    LPAD(CAST(FLOOR(mod( cast(avg(case when member_casual='casual' then ride_lenght end) as int64), 3600) / 60) AS STRING), 2, '0'), ':',
+    LPAD(CAST(mod(cast(avg(case when member_casual='casual' then ride_lenght end)as int64) , 60) AS STRING), 2, '0')
+  ) as avg_ride_lenght_casual,
+
+CONCAT(
+    LPAD(CAST(FLOOR(CAST(avg(case when member_casual='member' then ride_lenght end)as int64) / 3600) AS STRING), 2, '0'), ':',
+    LPAD(CAST(FLOOR(mod( cast(avg(case when member_casual='member' then ride_lenght end) as int64), 3600) / 60) AS STRING), 2, '0'), ':',
+    LPAD(CAST(mod(cast(avg(case when member_casual='member' then ride_lenght end)as int64) , 60) AS STRING), 2, '0')
+  ) as avg_ride_lenght_member,
+from bikes.Quarter12019_2020
+where ride_lenght<259200
+group by month
+order by month
+```
+
+| month | avg_ride_length_casual | avg_ride_length_member |
+|-------|-------------------------|------------------------|
+| Jan   | 00:44:27               | 00:11:41              |
+| Feb   | 00:40:42               | 00:11:21              |
+| March | 00:41:42               | 00:12:19              |
+
+From this two tables we can undestand that in from January to March rides incrise in both memberships but ride times do not. 
+
+### Summary of what we know from the querys
+| Aspect                                | Casual Riders                                        | Member Riders                             |
+|---------------------------------------|------------------------------------------------------|-------------------------------------------|
+| Trip Duration                         | Have longer trips, approximately 30 minutes more per trip. | Generally have shorter trips.             |
+| Frequency of Rides                    | Fewer rides overall.                                 | Significantly more rides in total.        |
+| Duration of Bike Usage                | More likely to take the bike for multiple days.      | Typically use the bike for a single day.  |
+| Popular Days                          | Highest activity on weekends.                        | Highest activity on Tuesdays and Thursdays. |
+| Seasonality (Jan - Mar)               | Increase in rides, but no change in  duration. | Increase in rides, no change in duration. |
+
+So the biggest differences that I'll like to focus on is trip duration, frequency of rides and popular days. To show this better I'll create a visual using Tableau. 
+
