@@ -10,6 +10,8 @@ linkedn: <https://www.linkedin.com/in/carlotta-rivera-alcalde-82b49724a>
 My CV:\
 [CVCarlottaRiveraAlcalde.pdf](https://github.com/CarlottaRA/CarlottaRA/blob/eaf2b622d5f8ff9c2559dd5a1f85daae5724e24a/CVCarlottaRiveraAlcalde.pdf)
 
+My CV:\
+[cv actualizado](CVCarlottaRiveraAlcalde.pdf)
 
 <!---
 CarlottaRA/CarlottaRA is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
